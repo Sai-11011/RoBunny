@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Central Core -->
+<rect x="24" y="24" width="16" height="16" rx="2" fill="white"/>
+
+<!-- Outer Glowa -->
+
+<rect x="16" y="16" width="32" height="32" rx="4" fill="white" fill-opacity="0.3">
+<animate attributeName="fill-opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite" />
+</rect>
+
+<!-- Faded Edge -->
+
+<rect x="8" y="8" width="48" height="48" rx="6" fill="white" fill-opacity="0.1"/>
+</svg>

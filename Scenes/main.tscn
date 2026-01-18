@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://di3eb435qreh2"]
+
+[ext_resource type="Script" uid="uid://yyahskgkbjo7" path="res://Script/main.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://c1khiekxyymhp" path="res://Scenes/ground.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cf206tvn1cbed" path="res://Scenes/Rabbit.tscn" id="3_8gbba"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bo1nx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
+zoom = Vector2(1.5, 1.5)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -428.0
+offset_top = -245.0
+offset_right = 426.0
+offset_bottom = 235.0
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="ground" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(212, -133)
+
+[node name="rabbit" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(-185, 75)
