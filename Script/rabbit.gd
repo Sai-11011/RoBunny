@@ -12,12 +12,16 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
+	if Input.is_action_just_pressed("shoot") :
+		$CollisionShape2D/bullet.emitting = true
+	
+	
 	# 3. Handle Animation (The Fix)
 	if is_on_floor():
 		# We are on the ground, so we should be running
 		$CollisionShape2D/JumpAnimation.play("run") 
 	else:
 		# We are in the air, so play the jump animation
-		$CollisionShape2D/JumpAnimation.play("jump")
+		$CollisionShape2D/JumpAnimation.play("runjump")
 
 	move_and_slide()
