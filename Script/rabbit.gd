@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const BulletScene : PackedScene = preload("res://Scenes/laser.tscn")
+const GunPosition = Vector2(-178+16,129)
 
 const JUMP_VELOCITY = -600.0
 
@@ -12,16 +14,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
-	if Input.is_action_just_pressed("shoot") :
-		$CollisionShape2D/bullet.emitting = true
-	
-	
-	# 3. Handle Animation (The Fix)
+	if Input.is_action_just_pressed("shoot") and is_on_floor():
+		var laser = BulletScene.instantiate()
+		laser.position = GunPosition
+		$laser.play()
+		get_parent().add_child(laser)
+		
 	if is_on_floor():
-		# We are on the ground, so we should be running
-		$CollisionShape2D/JumpAnimation.play("run") 
+		$JumpAnimation.play("run") 
 	else:
-		# We are in the air, so play the jump animation
-		$CollisionShape2D/JumpAnimation.play("runjump")
+		$JumpAnimation.play("Jump")
 
 	move_and_slide()

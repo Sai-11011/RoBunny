@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://di3eb435qreh2"]
+[gd_scene load_steps=5 format=3 uid="uid://di3eb435qreh2"]
 
 [ext_resource type="Script" uid="uid://yyahskgkbjo7" path="res://Script/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://c1khiekxyymhp" path="res://Scenes/ground.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cf206tvn1cbed" path="res://Scenes/Rabbit.tscn" id="3_8gbba"]
+[ext_resource type="AudioStream" uid="uid://ijehtb23gpm3" path="res://Assets/audio/Bgm-G2.wav" id="4_jjvhh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_bo1nx")
@@ -23,4 +24,16 @@ position = Vector2(-320, 160)
 scale = Vector2(0.5, 0.5)
 
 [node name="rabbit" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-226, 97)
+position = Vector2(-233, 44)
+scale = Vector2(1.5, 1.5)
+
+[node name="Bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jjvhh")
+volume_db = -27.131
+autoplay = true
+max_distance = 500.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

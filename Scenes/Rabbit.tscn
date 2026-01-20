@@ -1,12 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://cf206tvn1cbed"]
+[gd_scene load_steps=13 format=3 uid="uid://cf206tvn1cbed"]
 
 [ext_resource type="Script" uid="uid://bqemmryqjveov" path="res://Script/rabbit.gd" id="1_i4mnj"]
 [ext_resource type="Texture2D" uid="uid://jtemxpmajc63" path="res://Assets/sprites/Particals.svg" id="2_78qo1"]
 [ext_resource type="Texture2D" uid="uid://c5o3l0x7nc46e" path="res://Assets/sprites/Cyborg bunny.png" id="3_tfrfv"]
 [ext_resource type="Texture2D" uid="uid://5h8tw2vkqwea" path="res://Assets/sprites/Cyborg bunny main.png" id="4_axa3s"]
+[ext_resource type="AudioStream" uid="uid://dvw7na78dsgca" path="res://Assets/audio/laserShoot.wav" id="5_8nxve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtlo7"]
 size = Vector2(36, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yopd"]
+atlas = ExtResource("3_tfrfv")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nxve"]
+atlas = ExtResource("3_tfrfv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rynwb"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_8yopd")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8nxve")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_axa3s")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_axa3s")
+}],
+"loop": false,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="Curve" id="Curve_tfrfv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -22,59 +56,6 @@ scale_min = 0.099999994
 scale_max = 0.79999995
 scale_curve = SubResource("CurveTexture_axa3s")
 
-[sub_resource type="Curve" id="Curve_axa3s"]
-_data = [Vector2(0, 0.28089893), 0.0, 0.0, 0, 0, Vector2(1, 0.49438208), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_8nxve"]
-curve = SubResource("Curve_axa3s")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8yopd"]
-particle_flag_disable_z = true
-emission_shape = 5
-emission_point_count = 1
-gravity = Vector3(300, 0, 0)
-scale_min = 0.099999994
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_8nxve")
-color = Color(1, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8yopd"]
-atlas = ExtResource("3_tfrfv")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8nxve"]
-atlas = ExtResource("3_tfrfv")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rynwb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_axa3s")
-}],
-"loop": false,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8yopd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8yopd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8nxve")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_axa3s")
-}],
-"loop": false,
-"name": &"runJump",
-"speed": 5.0
-}]
-
 [node name="rabbit" type="CharacterBody2D"]
 script = ExtResource("1_i4mnj")
 
@@ -82,8 +63,13 @@ script = ExtResource("1_i4mnj")
 position = Vector2(18, 29)
 shape = SubResource("RectangleShape2D_rtlo7")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="CollisionShape2D"]
-position = Vector2(1, 18.5)
+[node name="JumpAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(22, 27)
+sprite_frames = SubResource("SpriteFrames_rynwb")
+animation = &"Jump"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(19, 47.5)
 amount = 24
 texture = ExtResource("2_78qo1")
 lifetime = 1.5
@@ -92,22 +78,5 @@ fixed_fps = 0
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_i4mnj")
 
-[node name="bullet" type="GPUParticles2D" parent="CollisionShape2D"]
-position = Vector2(15, 8)
-scale = Vector2(1, 0.1)
-emitting = false
-amount = 1
-sub_emitter = NodePath(".")
-texture = ExtResource("2_78qo1")
-lifetime = 3.0
-one_shot = true
-speed_scale = 9.1
-fixed_fps = 0
-trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_8yopd")
-
-[node name="JumpAnimation" type="AnimatedSprite2D" parent="CollisionShape2D"]
-position = Vector2(4, -2)
-sprite_frames = SubResource("SpriteFrames_rynwb")
-animation = &"run"
-autoplay = "run"
+[node name="laser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8nxve")

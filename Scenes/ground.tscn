@@ -34,4 +34,11 @@ shape = SubResource("RectangleShape2D_oltiy")
 wait_time = 0.5
 autostart = true
 
+[node name="Label" type="Label" parent="."]
+offset_right = 1289.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / "
+uppercase = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
