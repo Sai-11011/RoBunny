@@ -1,5 +1,5 @@
 extends Area2D
-
+#test
 var health = 3
 
 func _process(delta: float) -> void:
