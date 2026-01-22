@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const BulletScene : PackedScene = preload("res://Scenes/laser.tscn")
-const GunPosition = Vector2(-178+16,129)
+const GunPosition = Vector2(-162,129)
 const JUMP_VELOCITY = -600.0
 
 func _physics_process(delta: float) -> void:
