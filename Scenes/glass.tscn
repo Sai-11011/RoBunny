@@ -9,17 +9,19 @@ size = Vector2(50, 334.4332)
 script = ExtResource("1_pyhl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(25, 177)
-rotation = 0.25779337
+position = Vector2(25, 183)
+rotation = 0.09202053
 scale = Vector2(1, 0.9999999)
-skew = -0.2617994
+skew = -0.08726646
 shape = SubResource("RectangleShape2D_n8j3y")
 
-[node name="Node2D" type="Node2D" parent="."]
-rotation = 0.25550547
-skew = -0.2617994
+[node name="Node2D" type="Node2D" parent="CollisionShape2D"]
+position = Vector2(-27.057674, -167.56364)
+rotation = -0.012365557
+scale = Vector2(1.0010793, 0.9989219)
+skew = -2.682209e-05
 
-[node name="ColorRect" type="ColorRect" parent="Node2D" groups=["glass"]]
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D/Node2D" groups=["glass"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

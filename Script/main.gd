@@ -10,11 +10,10 @@ func _physics_process(delta: float) -> void:
 		$background/ground.position.x = -320
 	update_score()
 
-
 func _on_timer_timeout() -> void:
 	var glass = Glass.instantiate()
 	glass.position = Vector2(330,-200)
-	get_parent().add_child(glass)
+	add_child(glass)
 
 #score logic
 func _on_score_timeout() -> void:
