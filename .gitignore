@@ -21,3 +21,8 @@ mono_crash.*.json
 # --- Node.js & Security (The important part for your script) ---
 .env
 node_modules/
+
+# Automation scripts
+autocommit.js
+package.json
+package-lock.json
