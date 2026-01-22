@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8j3y"]
 size = Vector2(50, 334.4332)
 
-[node name="glass" type="Area2D"]
+[node name="glass" type="Area2D" groups=["glass"]]
 script = ExtResource("1_pyhl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_n8j3y")
 rotation = 0.25550547
 skew = -0.2617994
 
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
+[node name="ColorRect" type="ColorRect" parent="Node2D" groups=["glass"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,7 +29,7 @@ offset_right = 50.0
 offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 1, 0.5882353)
+color = Color(0, 1, 1, 0.19607843)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
