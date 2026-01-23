@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bwjhoqfsraqm5"]
+
+[node name="spikes" type="Area2D" groups=["glass"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-84, 32, 20, -57, 52, -17, 108, -61, 149, -14, 190, -48, 278, 57, 178, 139, -2, 128)
+
+[node name="Node2D" type="Node2D" parent="CollisionPolygon2D"]
+position = Vector2(16.098164, -203.47406)
+rotation = 0.87441
+
+[node name="ColorRect" type="ColorRect" parent="CollisionPolygon2D/Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 114.74689
+offset_top = 89.5538
+offset_right = 197.75809
+offset_bottom = 182.07074
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5706457, 1.5010428)
+color = Color(0, 1, 1, 0.19607843)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="CollisionPolygon2D/Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 168.28104
+offset_top = 19.767479
+offset_right = 302.07715
+offset_bottom = 152.97928
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 0.19607843)
+
+[node name="ColorRect3" type="ColorRect" parent="CollisionPolygon2D/Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 231.465
+offset_top = -34.449814
+offset_right = 370.39154
+offset_bottom = 97.03456
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 0.19607843)
