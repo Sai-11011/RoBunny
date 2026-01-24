@@ -29,7 +29,7 @@ func _on_timer_timeout() -> void:
 #score logic
 func _on_score_timeout() -> void:
 	score += 1
-	currentSpeed += 1
+	currentSpeed += 5
 
 func update_score():
 	$score.text = str(score)

@@ -28,7 +28,7 @@ autoplay = true
 max_distance = 500.0
 
 [node name="obstacalTimer" type="Timer" parent="background"]
-wait_time = 0.5
+wait_time = 3.0
 autostart = true
 
 [node name="ground" parent="background" instance=ExtResource("2_8gbba")]
@@ -54,7 +54,7 @@ horizontal_alignment = 1
 [node name="player" type="Node2D" parent="."]
 
 [node name="rabbit" parent="player" instance=ExtResource("3_8gbba")]
-position = Vector2(-233, 44)
+position = Vector2(-232.00002, 72)
 scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="player"]

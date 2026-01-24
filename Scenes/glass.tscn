@@ -1,18 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp6y0urc5bm3"]
+[gd_scene load_steps=13 format=3 uid="uid://bp6y0urc5bm3"]
 
 [ext_resource type="Script" uid="uid://bt63j7df03lc2" path="res://Script/glass.gd" id="1_pyhl2"]
+[ext_resource type="Texture2D" uid="uid://bd1sax76wun8l" path="res://Assets/sprites/BreakByBody.png" id="2_a2nsn"]
+[ext_resource type="Texture2D" uid="uid://bdpvq1133nbbc" path="res://Assets/sprites/break-by-bullet.png" id="3_fu540"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8j3y"]
-size = Vector2(50, 334.4332)
+size = Vector2(49.303024, 335.45172)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giy0w"]
+atlas = ExtResource("2_a2nsn")
+region = Rect2(0, 0, 50, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dn21"]
+atlas = ExtResource("2_a2nsn")
+region = Rect2(50, 0, 50, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lub8"]
+atlas = ExtResource("2_a2nsn")
+region = Rect2(100, 0, 50, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csgh7"]
+atlas = ExtResource("3_fu540")
+region = Rect2(0, 0, 50, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytfn8"]
+atlas = ExtResource("3_fu540")
+region = Rect2(50, 0, 50, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on0nn"]
+atlas = ExtResource("3_fu540")
+region = Rect2(100, 0, 50, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jjbn"]
+atlas = ExtResource("3_fu540")
+region = Rect2(150, 0, 50, 335)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fu540"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dn21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lub8")
+}],
+"loop": false,
+"name": &"break-by-body",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csgh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytfn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on0nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jjbn")
+}],
+"loop": false,
+"name": &"break-by-bullet",
+"speed": 15.0
+}]
 
 [node name="glass" type="Area2D" groups=["glass"]]
 script = ExtResource("1_pyhl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(25, 183)
+position = Vector2(25.344591, 183.54129)
 rotation = 0.09202053
-scale = Vector2(1, 0.9999999)
-skew = -0.08726646
+scale = Vector2(0.99999994, 0.9999998)
+skew = -0.087266564
 shape = SubResource("RectangleShape2D_n8j3y")
 
 [node name="Node2D" type="Node2D" parent="CollisionShape2D"]
@@ -33,6 +97,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 1, 0.19607843)
 metadata/_edit_use_anchors_ = true
+
+[node name="Break" type="AnimatedSprite2D" parent="CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_fu540")
+animation = &"break-by-bullet"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
