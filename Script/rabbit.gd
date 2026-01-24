@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const BulletScene : PackedScene = preload("res://Scenes/laser.tscn")
 const GunPosition = Vector2(-162,129)
-const JUMP_VELOCITY = -600.0
-
+const JUMP_VELOCITY = -500.0
+ 
 func _physics_process(delta: float) -> void:
 	# 1. Apply Gravity
 	if not is_on_floor():

@@ -8,6 +8,7 @@
 size = Vector2(2560, 41.5)
 
 [node name="ground" type="Node2D"]
+z_index = 1
 script = ExtResource("1_688p1")
 
 [node name="background" type="ColorRect" parent="."]

@@ -27,8 +27,8 @@ volume_db = -27.131
 autoplay = true
 max_distance = 500.0
 
-[node name="groundMove" type="Timer" parent="background"]
-wait_time = 3.0
+[node name="obstacalTimer" type="Timer" parent="background"]
+wait_time = 0.5
 autostart = true
 
 [node name="ground" parent="background" instance=ExtResource("2_8gbba")]
@@ -63,5 +63,5 @@ zoom = Vector2(2, 2)
 [node name="scoretimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="background/groundMove" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="background/obstacalTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="scoretimer" to="." method="_on_score_timeout"]
