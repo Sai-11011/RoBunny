@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://di3eb435qreh2"]
+[gd_scene load_steps=6 format=3 uid="uid://di3eb435qreh2"]
 
 [ext_resource type="Script" uid="uid://yyahskgkbjo7" path="res://Script/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://c1khiekxyymhp" path="res://Scenes/ground.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cf206tvn1cbed" path="res://Scenes/Rabbit.tscn" id="3_8gbba"]
 [ext_resource type="AudioStream" uid="uid://ijehtb23gpm3" path="res://Assets/audio/Bgm-G2.wav" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://v6yh50l4kr8x" path="res://Scenes/hearts.tscn" id="5_kry3j"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_bo1nx")
@@ -27,29 +28,10 @@ volume_db = -27.131
 autoplay = true
 max_distance = 500.0
 
-[node name="obstacalTimer" type="Timer" parent="background"]
-wait_time = 3.0
-autostart = true
-
 [node name="ground" parent="background" instance=ExtResource("2_8gbba")]
 position = Vector2(-320, 160)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
-
-[node name="score" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -141.0
-offset_right = 44.5
-offset_bottom = -118.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-horizontal_alignment = 1
 
 [node name="player" type="Node2D" parent="."]
 
@@ -60,8 +42,43 @@ scale = Vector2(1.5, 1.5)
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
 
-[node name="scoretimer" type="Timer" parent="."]
+[node name="extra" type="Node" parent="."]
+
+[node name="score" type="Label" parent="extra"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -679.0
+offset_top = -501.0
+offset_right = -595.5
+offset_bottom = -478.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+horizontal_alignment = 1
+
+[node name="hearts" parent="extra" instance=ExtResource("5_kry3j")]
+position = Vector2(-270, -137)
+
+[node name="hearts2" parent="extra" instance=ExtResource("5_kry3j")]
+position = Vector2(-227, -136)
+
+[node name="hearts3" parent="extra" instance=ExtResource("5_kry3j")]
+position = Vector2(-185, -138)
+
+[node name="timers" type="Node" parent="."]
+
+[node name="scoretimer" type="Timer" parent="timers"]
 autostart = true
 
-[connection signal="timeout" from="background/obstacalTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="scoretimer" to="." method="_on_score_timeout"]
+[node name="obstacalTimer" type="Timer" parent="timers"]
+wait_time = 2.5
+autostart = true
+
+[node name="Timer" type="Timer" parent="timers"]
+one_shot = true
+
+[connection signal="timeout" from="timers/scoretimer" to="." method="_on_score_timeout"]
+[connection signal="timeout" from="timers/obstacalTimer" to="." method="_on_timer_timeout"]

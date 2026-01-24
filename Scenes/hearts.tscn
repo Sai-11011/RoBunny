@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://v6yh50l4kr8x"]
+
+[ext_resource type="Texture2D" uid="uid://dgcfewvfsn0j0" path="res://Assets/sprites/Hearts - day.png" id="1_0wlvp"]
+[ext_resource type="Texture2D" uid="uid://ct3unyxchlq5k" path="res://Assets/sprites/Hearts - night.png" id="2_dkl51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjamk"]
+atlas = ExtResource("1_0wlvp")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tca42"]
+atlas = ExtResource("1_0wlvp")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx2td"]
+atlas = ExtResource("1_0wlvp")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlbxt"]
+atlas = ExtResource("2_dkl51")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3v5c"]
+atlas = ExtResource("2_dkl51")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vflfl"]
+atlas = ExtResource("2_dkl51")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wlvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjamk")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_tca42")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_vx2td")
+}],
+"loop": false,
+"name": &"day",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlbxt")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_o3v5c")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_vflfl")
+}],
+"loop": false,
+"name": &"night",
+"speed": 15.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_0wlvp")
+animation = &"night"

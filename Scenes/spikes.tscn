@@ -6,6 +6,9 @@
 script = ExtResource("1_a5dqs")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-4, -17)
+rotation = -0.08284043
+scale = Vector2(0.6, 0.6)
 polygon = PackedVector2Array(-84, 32, 20, -57, 52, -17, 108, -61, 149, -14, 190, -48, 278, 57, 178, 139, -2, 128)
 
 [node name="Node2D" type="Node2D" parent="CollisionPolygon2D"]
