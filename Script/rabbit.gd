@@ -25,3 +25,13 @@ func _physics_process(delta: float) -> void:
 		$JumpAnimation.play("Jump")
 
 	move_and_slide()
+
+
+var Neon = Color(255,255,255)
+
+func _on_timer_timeout() -> void:
+	Neon = Color(randf(),randf(),randf())
+	colorChange()
+
+func colorChange():
+	$ColorRect.color = Neon

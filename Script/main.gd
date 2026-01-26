@@ -9,6 +9,16 @@ const Spikes : PackedScene = preload("res://Scenes/spikes.tscn")
 var currentSpeed = 150
 var heartBreak = "night" 
 
+#start logic
+func _ready() -> void:
+	get_tree().paused = true
+	
+func _on_start_button_pressed() -> void:
+	$CanvasLayer/Start.visible = false
+	print($CanvasLayer/Start.visible)
+	get_tree().paused = false
+
+
 func _physics_process(delta: float) -> void:
 	$background/ground.position.x -= currentSpeed*delta
 	if $background/ground.position.x <= -960:
@@ -35,6 +45,7 @@ func take_damage():
 
 
 func update_lives():
+	pass
 	var heart_to_remove = null
 	
 	# 1. Pick the heart
@@ -47,16 +58,11 @@ func update_lives():
 	
 	# 2. Play animation and wait for signal
 	if heart_to_remove:
-		heart_to_remove.play(heartBreak) 
+		heart_to_remove.play_break()
 		await heart_to_remove.animation_finished 
 		heart_to_remove.queue_free()
 		if lives == 0:
 			game_over()
-
-
-func game_over():
-	get_tree().paused = true
-
 
 #score logic
 func _on_score_timeout() -> void:
@@ -65,3 +71,13 @@ func _on_score_timeout() -> void:
 
 func update_score():
 	$extra/score.text = str(score)
+
+#game loop
+func game_over():
+	get_tree().paused = true
+	$CanvasLayer/gameOverUI/score.text ="Score : "+str(score)
+	$CanvasLayer/gameOverUI.visible = true
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
