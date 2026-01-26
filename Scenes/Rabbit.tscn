@@ -24,10 +24,10 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_rynwb"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_axa3s")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_8nxve")
 }, {
 "duration": 1.0,
@@ -68,6 +68,7 @@ offset_left = 21.0
 offset_top = 49.0
 offset_right = 29.0
 offset_bottom = 56.0
+color = Color(1, 1, 1, 0)
 
 [node name="JumpAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(23, 27)
@@ -91,8 +92,3 @@ stream = ExtResource("5_8nxve")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(13, 2, 16, 4, 20, 0, 25, 13, 30, 21, 25, 27, 35, 39, 31, 41, 28, 56, 22, 57, 13, 47, 12, 35, 17, 28, 13, 20, 16, 13, 9, 7)
 metadata/_edit_lock_ = true
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

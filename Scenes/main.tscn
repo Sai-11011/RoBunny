@@ -104,7 +104,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6862745)
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/gameOverUI"]
+[node name="GameOver" type="Label" parent="CanvasLayer/gameOverUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
@@ -142,9 +142,9 @@ metadata/_edit_lock_ = true
 [node name="score" type="Label" parent="CanvasLayer/gameOverUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
+anchor_left = 0.3
 anchor_top = 0.5
-anchor_right = 0.6
+anchor_right = 0.45
 anchor_bottom = 0.55
 offset_left = -20.0
 offset_top = -11.5
@@ -154,7 +154,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_21xkr")
 theme_override_font_sizes/font_size = 20
-text = "score : 0"
+text = "score :  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScore" type="Label" parent="CanvasLayer/gameOverUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.55
+offset_left = -48.5
+offset_top = -11.5
+offset_right = 48.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 20
+text = "High-Score : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -201,7 +220,7 @@ anchors_preset = -1
 anchor_left = 0.4
 anchor_top = 0.65
 anchor_right = 0.6
-anchor_bottom = 0.7
+anchor_bottom = 0.75
 offset_left = -2.0
 offset_top = -16.5
 offset_right = 6.0
@@ -209,7 +228,7 @@ offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_21xkr")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Start"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Start"]
@@ -227,6 +246,24 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_344ge")
+
+[node name="HighScore" type="Label" parent="CanvasLayer/Start"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.8
+anchor_right = 0.65
+anchor_bottom = 0.9
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 25
+text = "High-Score : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="timers/scoretimer" to="." method="_on_score_timeout"]
 [connection signal="timeout" from="timers/obstacalTimer" to="." method="_on_timer_timeout"]

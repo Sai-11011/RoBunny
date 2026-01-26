@@ -12,6 +12,7 @@ var heartBreak = "night"
 #start logic
 func _ready() -> void:
 	get_tree().paused = true
+	$CanvasLayer/Start/HighScore.text = "High-Score : "+str(Global.score)
 	
 func _on_start_button_pressed() -> void:
 	$CanvasLayer/Start.visible = false
@@ -75,9 +76,13 @@ func update_score():
 #game loop
 func game_over():
 	get_tree().paused = true
+	if Global.score < score:
+		Global.score = score
 	$CanvasLayer/gameOverUI/score.text ="Score : "+str(score)
+	$CanvasLayer/gameOverUI/HighScore.text = "High-Score : "+str(Global.score)
 	$CanvasLayer/gameOverUI.visible = true
 
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	$CanvasLayer/Start/HighScore.text = "High-Score : "+str(Global.score)
