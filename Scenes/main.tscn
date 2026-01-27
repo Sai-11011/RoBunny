@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://di3eb435qreh2"]
+[gd_scene load_steps=11 format=3 uid="uid://di3eb435qreh2"]
 
 [ext_resource type="Script" uid="uid://yyahskgkbjo7" path="res://Script/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://dkw1uaoyqyp0g" path="res://Script/background.gd" id="2_6bp64"]
@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://ijehtb23gpm3" path="res://Assets/audio/Bgm-G2.wav" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://v6yh50l4kr8x" path="res://Scenes/hearts.tscn" id="5_kry3j"]
 [ext_resource type="FontFile" uid="uid://cwdilri6gbnjv" path="res://Assets/Font/PressStart2P-Regular.ttf" id="6_21xkr"]
+[ext_resource type="AudioStream" uid="uid://cf46ig1g6o81b" path="res://Assets/audio/hitHurt.wav" id="7_hptm8"]
 [ext_resource type="Texture2D" uid="uid://cpyn63gmvaq2d" path="res://icon.svg" id="8_344ge"]
+[ext_resource type="AudioStream" uid="uid://dde1r8hnx8nh1" path="res://Assets/audio/die.wav" id="9_d1ilt"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_bo1nx")
@@ -26,16 +28,15 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_6bp64")
 metadata/_edit_lock_ = true
 
-[node name="Bgm" type="AudioStreamPlayer2D" parent="background"]
-stream = ExtResource("4_jjvhh")
-volume_db = -27.131
-autoplay = true
-max_distance = 500.0
-
 [node name="ground" parent="background" instance=ExtResource("2_8gbba")]
 position = Vector2(-320, 160)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
+
+[node name="Bgm" type="AudioStreamPlayer" parent="background"]
+stream = ExtResource("4_jjvhh")
+volume_db = -5.734
+autoplay = true
 
 [node name="player" type="Node2D" parent="."]
 
@@ -71,6 +72,9 @@ position = Vector2(-227, -136)
 
 [node name="hearts3" parent="extra" instance=ExtResource("5_kry3j")]
 position = Vector2(-185, -138)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="extra"]
+stream = ExtResource("7_hptm8")
 
 [node name="timers" type="Node" parent="."]
 
@@ -176,6 +180,9 @@ theme_override_font_sizes/font_size = 20
 text = "High-Score : "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/gameOverUI"]
+stream = ExtResource("9_d1ilt")
 
 [node name="Start" type="Control" parent="CanvasLayer"]
 layout_mode = 3

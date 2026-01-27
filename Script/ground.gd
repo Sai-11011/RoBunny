@@ -1,11 +1,13 @@
 extends Node2D
 
-var Neon = Color(255,255,255)
+var neon = Color(255,255,255)
 
 func _on_timer_timeout() -> void:
-	Neon = Color(randf(),randf(),randf())
+	neon = Color(randf(),randf(),randf())
+	Global.neon = neon
 	colorChange()
 
 func colorChange():
-	$background.color = Neon
-	$Label.modulate = Neon
+	$background.color = neon
+	$Label.modulate = neon
+	

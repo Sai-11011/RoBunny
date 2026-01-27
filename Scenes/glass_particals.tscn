@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://criclq6u0x3lc"]
+
+[ext_resource type="Texture2D" uid="uid://byuenu844sa7h" path="res://Assets/sprites/glass_shards.svg" id="1_hk6d6"]
+[ext_resource type="Script" uid="uid://b61k77hrt8xah" path="res://Script/glass_particals.gd" id="1_l375g"]
+
+[node name="glass_particals" type="CPUParticles2D"]
+modulate = Color(0, 1, 1, 0.4862745)
+self_modulate = Color(0, 1, 1, 0.4862745)
+texture_filter = 1
+emitting = false
+amount = 10
+texture = ExtResource("1_hk6d6")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 180.0
+gravity = Vector2(0, 1800)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 0.3
+script = ExtResource("1_l375g")

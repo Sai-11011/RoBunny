@@ -8,9 +8,11 @@ func _physics_process(delta: float) -> void:
 	# 1. Apply Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	$ColorRect.color = Global.neon
 
 	# 2. Handle Jump Input
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$AudioStreamPlayer.play()
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_just_pressed("shoot") and is_on_floor():

@@ -7,18 +7,16 @@ const Glass : PackedScene = preload("res://Scenes/glass.tscn")
 const Spikes : PackedScene = preload("res://Scenes/spikes.tscn")
 
 var currentSpeed = 150
-var heartBreak = "night" 
 
 #start logic
 func _ready() -> void:
-	get_tree().paused = true
+	get_tree().paused = true 
 	$CanvasLayer/Start/HighScore.text = "High-Score : "+str(Global.score)
 	
 func _on_start_button_pressed() -> void:
 	$CanvasLayer/Start.visible = false
 	print($CanvasLayer/Start.visible)
 	get_tree().paused = false
-
 
 func _physics_process(delta: float) -> void:
 	$background/ground.position.x -= currentSpeed*delta
@@ -35,18 +33,18 @@ func _on_timer_timeout() -> void:
 		add_child(spikes)
 	else:
 		var glass = Glass.instantiate()
-		glass.position = Vector2(330,-200)
+		glass.position = Vector2(330,-130)
 		glass.speed = currentSpeed
 		add_child(glass)
 
 #lives logic
 func take_damage():
+	if lives <= 0:return
 	lives -= 1
 	update_lives()
 
 
 func update_lives():
-	pass
 	var heart_to_remove = null
 	
 	# 1. Pick the heart
@@ -60,6 +58,8 @@ func update_lives():
 	# 2. Play animation and wait for signal
 	if heart_to_remove:
 		heart_to_remove.play_break()
+		$extra/AudioStreamPlayer.play()
+		
 		await heart_to_remove.animation_finished 
 		heart_to_remove.queue_free()
 		if lives == 0:
@@ -75,6 +75,7 @@ func update_score():
 
 #game loop
 func game_over():
+	$CanvasLayer/gameOverUI/AudioStreamPlayer.play()
 	get_tree().paused = true
 	if Global.score < score:
 		Global.score = score

@@ -7,8 +7,6 @@ func _process(delta: float) -> void:
 	if position.x <= -650:
 		queue_free()
 
-
-
 func _on_body_entered(body: Node2D) -> void:
 		if body.name == "rabbit": 
 			get_parent().game_over()

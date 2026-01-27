@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf206tvn1cbed"]
+[gd_scene load_steps=14 format=3 uid="uid://cf206tvn1cbed"]
 
 [ext_resource type="Script" uid="uid://bqemmryqjveov" path="res://Script/rabbit.gd" id="1_i4mnj"]
 [ext_resource type="Texture2D" uid="uid://jtemxpmajc63" path="res://Assets/sprites/Particals.svg" id="2_78qo1"]
 [ext_resource type="Texture2D" uid="uid://b2ksq30ka3x75" path="res://Assets/sprites/Cyborg bunny.png" id="3_tfrfv"]
 [ext_resource type="AudioStream" uid="uid://dvw7na78dsgca" path="res://Assets/audio/laserShoot.wav" id="5_8nxve"]
+[ext_resource type="AudioStream" uid="uid://dppjbbifbt0o2" path="res://Assets/audio/jump.wav" id="5_8yopd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axa3s"]
 atlas = ExtResource("3_tfrfv")
@@ -68,7 +69,7 @@ offset_left = 21.0
 offset_top = 49.0
 offset_right = 29.0
 offset_bottom = 56.0
-color = Color(1, 1, 1, 0)
+color = Color(0.36078432, 0.36078432, 0.36078432, 1)
 
 [node name="JumpAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(23, 27)
@@ -92,3 +93,6 @@ stream = ExtResource("5_8nxve")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(13, 2, 16, 4, 20, 0, 25, 13, 30, 21, 25, 27, 35, 39, 31, 41, 28, 56, 22, 57, 13, 47, 12, 35, 17, 28, 13, 20, 16, 13, 9, 7)
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8yopd")

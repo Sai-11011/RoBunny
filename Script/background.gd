@@ -1,6 +1,6 @@
 extends ColorRect
 
-var brightness = 0.8  # Start at 1.0 (White/Day)
+var brightness = 0.0  # Start at 1.0 (White/Day)
 var is_daytime = true # We are currently in day mode
 var speed = 0.01       # How fast the sun sets (Lower = Slower)
 
@@ -14,11 +14,10 @@ func transition(delta):
 			
 	else:
 		brightness += speed * delta
-		if brightness >= 0.8: # If fully white
-			brightness = 0.8
+		if brightness >= Global.max_brightness: # If fully white
+			brightness = Global.max_brightness
 			is_daytime = true # Switch to Day mode
 
-	# Apply the color (Grey scale: R, G, and B are the same)
 	color = Color(brightness, brightness, brightness)
 
 func _process(delta: float) -> void:

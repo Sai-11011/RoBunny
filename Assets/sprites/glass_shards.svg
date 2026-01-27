@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <path d="M16 2 L26 12 L20 30 L6 14 Z" 
+        fill="#E0FFFF" 
+        fill-opacity="0.8" 
+        stroke="#00FFFF" 
+        stroke-width="2" 
+        stroke-linejoin="round"/>
+</svg>
