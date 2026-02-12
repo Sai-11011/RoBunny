@@ -15,7 +15,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullets"):
 		is_broken = true
 		$CollisionShape2D.set_deferred("disabled", true) # Turn off collision immediately
-		$AudioStreamPlayer2D.play()
+		AudioManager.play_glass_break()
 		area.queue_free() # Delete bullet
 		spawn_particals()
 		var Break = $CollisionShape2D/Break
@@ -29,7 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "rabbit":
 		is_broken = true
 		$CollisionShape2D.set_deferred("disabled", true) # Turn off collision immediately
-		$AudioStreamPlayer2D.play()
+		AudioManager.play_glass_break()
 		
 		var Break = $CollisionShape2D/Break
 		Break.play("break-by-body")

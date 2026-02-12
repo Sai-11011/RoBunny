@@ -8,11 +8,16 @@ const Spikes : PackedScene = preload("res://Scenes/spikes.tscn")
 
 var currentSpeed = 150
 
-#start logic
+# start logic
 func _ready() -> void:
+	# 1. Reset Audio State
+	AudioManager.stop_game_over() # Stop sad music if it's still playing
+	AudioManager.play_bgm()       # Force BGM to start (because Autoload won't do it on restart)
+	
+	# 2. Pause the game setup
 	get_tree().paused = true 
 	$CanvasLayer/Start/HighScore.text = "High-Score : "+str(Global.score)
-	
+
 func _on_start_button_pressed() -> void:
 	$CanvasLayer/Start.visible = false
 	print($CanvasLayer/Start.visible)
@@ -58,7 +63,7 @@ func update_lives():
 	# 2. Play animation and wait for signal
 	if heart_to_remove:
 		heart_to_remove.play_break()
-		$extra/AudioStreamPlayer.play()
+		AudioManager.play_heart_break()
 		
 		await heart_to_remove.animation_finished 
 		heart_to_remove.queue_free()
@@ -75,10 +80,11 @@ func update_score():
 
 #game loop
 func game_over():
-	$CanvasLayer/gameOverUI/AudioStreamPlayer.play()
+	AudioManager.play_game_over()
 	get_tree().paused = true
 	if Global.score < score:
 		Global.score = score
+		Global.save_score()
 	$CanvasLayer/gameOverUI/score.text ="Score : "+str(score)
 	$CanvasLayer/gameOverUI/HighScore.text = "High-Score : "+str(Global.score)
 	$CanvasLayer/gameOverUI.visible = true

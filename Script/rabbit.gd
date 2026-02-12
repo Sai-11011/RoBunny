@@ -12,13 +12,13 @@ func _physics_process(delta: float) -> void:
 
 	# 2. Handle Jump Input
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		$AudioStreamPlayer.play()
+		AudioManager.play_jump()
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_just_pressed("shoot") and is_on_floor():
 		var laser = BulletScene.instantiate()
 		laser.position = GunPosition
-		$laser.play()
+		AudioManager.play_laser()
 		get_parent().add_child(laser)
 		
 	if is_on_floor():
