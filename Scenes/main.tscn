@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://di3eb435qreh2"]
+[gd_scene format=3 uid="uid://di3eb435qreh2"]
 
 [ext_resource type="Script" uid="uid://yyahskgkbjo7" path="res://Script/main.gd" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://dkw1uaoyqyp0g" path="res://Script/background.gd" id="2_6bp64"]
@@ -8,14 +8,14 @@
 [ext_resource type="FontFile" uid="uid://cwdilri6gbnjv" path="res://Assets/Font/PressStart2P-Regular.ttf" id="6_21xkr"]
 [ext_resource type="Texture2D" uid="uid://cpyn63gmvaq2d" path="res://icon.svg" id="8_344ge"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=895915310]
 script = ExtResource("1_bo1nx")
 
-[node name="background" type="Node2D" parent="."]
+[node name="background" type="Node2D" parent="." unique_id=1596859825]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="background"]
+[node name="ColorRect" type="ColorRect" parent="background" unique_id=14201527]
 offset_left = -320.0
 offset_top = -180.0
 offset_right = 960.0
@@ -25,23 +25,23 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_6bp64")
 metadata/_edit_lock_ = true
 
-[node name="ground" parent="background" instance=ExtResource("2_8gbba")]
+[node name="ground" parent="background" unique_id=1731615368 instance=ExtResource("2_8gbba")]
 position = Vector2(-320, 160)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
-[node name="player" type="Node2D" parent="."]
+[node name="player" type="Node2D" parent="." unique_id=1662174411]
 
-[node name="rabbit" parent="player" instance=ExtResource("3_8gbba")]
+[node name="rabbit" parent="player" unique_id=353238947 instance=ExtResource("3_8gbba")]
 position = Vector2(-232.00002, 72)
 scale = Vector2(1.5, 1.5)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=2061435119]
 zoom = Vector2(2, 2)
 
-[node name="extra" type="Node" parent="."]
+[node name="extra" type="Node" parent="." unique_id=2108907067]
 
-[node name="score" type="Label" parent="extra"]
+[node name="score" type="Label" parent="extra" unique_id=532713108]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -56,28 +56,28 @@ grow_vertical = 2
 size_flags_horizontal = 4
 horizontal_alignment = 1
 
-[node name="hearts" parent="extra" instance=ExtResource("5_kry3j")]
+[node name="hearts" parent="extra" unique_id=1159513574 instance=ExtResource("5_kry3j")]
 position = Vector2(-270, -137)
 
-[node name="hearts2" parent="extra" instance=ExtResource("5_kry3j")]
+[node name="hearts2" parent="extra" unique_id=1964066681 instance=ExtResource("5_kry3j")]
 position = Vector2(-227, -136)
 
-[node name="hearts3" parent="extra" instance=ExtResource("5_kry3j")]
+[node name="hearts3" parent="extra" unique_id=526130130 instance=ExtResource("5_kry3j")]
 position = Vector2(-185, -138)
 
-[node name="timers" type="Node" parent="."]
+[node name="timers" type="Node" parent="." unique_id=1906228543]
 
-[node name="scoretimer" type="Timer" parent="timers"]
+[node name="scoretimer" type="Timer" parent="timers" unique_id=1231435055]
 autostart = true
 
-[node name="obstacalTimer" type="Timer" parent="timers"]
+[node name="obstacalTimer" type="Timer" parent="timers" unique_id=259423043]
 wait_time = 2.5
 autostart = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=207306101]
 process_mode = 2
 
-[node name="gameOverUI" type="Control" parent="CanvasLayer"]
+[node name="gameOverUI" type="Control" parent="CanvasLayer" unique_id=1694155979]
 process_mode = 2
 visible = false
 layout_mode = 3
@@ -86,8 +86,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/gameOverUI"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/gameOverUI" unique_id=419030175]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +99,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6862745)
 metadata/_edit_lock_ = true
 
-[node name="GameOver" type="Label" parent="CanvasLayer/gameOverUI"]
+[node name="GameOver" type="Label" parent="CanvasLayer/gameOverUI" unique_id=1794404718]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
@@ -116,23 +118,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="RestartButton" type="Button" parent="CanvasLayer/gameOverUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.65
-anchor_right = 0.6
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_fonts/font = ExtResource("6_21xkr")
-theme_override_font_sizes/font_size = 24
-action_mode = 0
-text = "Menu"
-metadata/_edit_lock_ = true
-
-[node name="score" type="Label" parent="CanvasLayer/gameOverUI"]
+[node name="score" type="Label" parent="CanvasLayer/gameOverUI" unique_id=1719026687]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
@@ -151,7 +137,7 @@ text = "score :  "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScore" type="Label" parent="CanvasLayer/gameOverUI"]
+[node name="HighScore" type="Label" parent="CanvasLayer/gameOverUI" unique_id=1047467777]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6
@@ -170,15 +156,70 @@ text = "High-Score : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start" type="Control" parent="CanvasLayer"]
+[node name="Music" type="CheckButton" parent="CanvasLayer/gameOverUI" unique_id=168047644]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/gameOverUI" unique_id=1142044670]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Sound"
+
+[node name="Menu" type="Button" parent="CanvasLayer/gameOverUI" unique_id=1771811314]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.65
+anchor_right = 0.4
+anchor_bottom = 0.8
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 28
+text = "Menu"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/gameOverUI" unique_id=598169965]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.65
+anchor_right = 0.8
+anchor_bottom = 0.8
+offset_right = 11.0
+offset_bottom = 21.199951
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+action_mode = 0
+text = "Restart"
+
+[node name="Start" type="Control" parent="CanvasLayer" unique_id=2004847097]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Start"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Start" unique_id=1327695852]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,7 +229,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Start"]
+[node name="Label" type="Label" parent="CanvasLayer/Start" unique_id=2100168175]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35
@@ -207,7 +248,7 @@ text = "GoBunny"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Start"]
+[node name="StartButton" type="Button" parent="CanvasLayer/Start" unique_id=1900690009]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -224,7 +265,7 @@ theme_override_fonts/font = ExtResource("6_21xkr")
 theme_override_font_sizes/font_size = 40
 text = "Start"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Start"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Start" unique_id=1001744424]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -240,7 +281,7 @@ grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_344ge")
 
-[node name="HighScore" type="Label" parent="CanvasLayer/Start"]
+[node name="HighScore" type="Label" parent="CanvasLayer/Start" unique_id=424670267]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35
@@ -258,7 +299,145 @@ text = "High-Score : 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Music" type="CheckButton" parent="CanvasLayer/Start" unique_id=2025676821]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/Start" unique_id=1433257429]
+layout_mode = 1
+offset_right = 44.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Sound"
+
+[node name="credits" type="Label" parent="CanvasLayer/Start" unique_id=1789587304]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 10
+text = "A Godot Learning Project by NodeNomad     "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=906177382]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=21392291]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.44313726)
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu" unique_id=1880031768]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.3
+anchor_right = 0.6
+anchor_bottom = 0.35
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 35
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Button" parent="CanvasLayer/PauseMenu" unique_id=124582995]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.55
+anchor_right = 0.4
+anchor_bottom = 0.6
+offset_left = -21.5
+offset_top = -15.5
+offset_right = 21.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Menu"
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseMenu" unique_id=1120837608]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.55
+anchor_right = 0.65
+anchor_bottom = 0.6
+offset_left = -76.0
+offset_top = -16.0
+offset_right = 76.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Resume"
+
+[node name="Music" type="CheckButton" parent="CanvasLayer/PauseMenu" unique_id=1205535113]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/PauseMenu" unique_id=78858701]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 24
+text = "Sound"
+
 [connection signal="timeout" from="timers/scoretimer" to="." method="_on_score_timeout"]
 [connection signal="timeout" from="timers/obstacalTimer" to="." method="_on_timer_timeout"]
+[connection signal="toggled" from="CanvasLayer/gameOverUI/Music" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="CanvasLayer/gameOverUI/Sound" to="." method="_on_sound_toggled"]
+[connection signal="pressed" from="CanvasLayer/gameOverUI/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/gameOverUI/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Start/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/Start/Music" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="CanvasLayer/Start/Sound" to="." method="_on_sound_toggled"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="toggled" from="CanvasLayer/PauseMenu/Music" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="CanvasLayer/PauseMenu/Sound" to="." method="_on_sound_toggled"]

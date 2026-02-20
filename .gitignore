@@ -23,6 +23,6 @@ mono_crash.*.json
 node_modules/
 
 # Automation scripts
-autocommit.js
+aicommit.js
 package.json
 package-lock.json

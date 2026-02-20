@@ -3,33 +3,42 @@ extends Node
 var score:int = 0
 const max_brightness=0.6
 var neon := Color.WHITE
+var instant_restart = false
 
-const SAVE_FILE = "user://highscore.save"
+var sound_on : bool = true
+var music_on : bool = true
 
+const SAVE_FILE = "user://savegame.dat"
 const SECURITY_KEY = "Rabbit_Neon_Galaxy_1919_X" 
 
 func _ready():
-	load_score()
+	load_data()
 
-func save_score():
+func save_data():
 	var file = FileAccess.open_encrypted_with_pass(SAVE_FILE, FileAccess.WRITE, SECURITY_KEY)
-	
 	if file == null:
-		print("Error: Could not save encrypted file!")
+		print("Save Error!")
+		return
+	
+	var data = {
+		"highscore": score,
+		"sound": sound_on,
+		"music": music_on
+	}
+	
+	file.store_var(data)
+
+func load_data():
+	if not FileAccess.file_exists(SAVE_FILE):
+		return
+	var file = FileAccess.open_encrypted_with_pass(SAVE_FILE, FileAccess.READ, SECURITY_KEY)
+	if file == null:
 		return
 		
-	file.store_32(score)
-
-func load_score():
-	if FileAccess.file_exists(SAVE_FILE):
-		# We must use the SAME key to open it
-		var file = FileAccess.open_encrypted_with_pass(SAVE_FILE, FileAccess.READ, SECURITY_KEY)
-		
-		if file == null:
-			print("Error: Save file is corrupted or password changed.")
-			score = 0
-			return
-			
-		score = file.get_32()
-	else:
-		score = 0
+	# Get the dictionary back
+	var data = file.get_var()
+	
+	# Update our variables (with safety checks in case file is old)
+	if "highscore" in data: score = data["highscore"]
+	if "sound" in data: sound_on = data["sound"]
+	if "music" in data: music_on = data["music"]

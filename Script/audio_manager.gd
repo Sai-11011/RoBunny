@@ -1,5 +1,15 @@
 extends Node
 
+var music_bus_index = AudioServer.get_bus_index("Music")
+var sfx_bus_index = AudioServer.get_bus_index("Sound")
+
+func toggle_music(is_enabled: bool):
+	# AudioServer handles the actual muting
+	AudioServer.set_bus_mute(music_bus_index, not is_enabled)
+
+func toggle_sfx(is_enabled: bool):
+	AudioServer.set_bus_mute(sfx_bus_index, not is_enabled)
+	
 # Play specific sounds by calling these functions directly
 func _ready() -> void:
 	play_bgm()
@@ -22,6 +32,9 @@ func play_glass_break():
 
 func play_heart_break():
 	$HeartBreak.play()
+	
+func play_ui_click():
+	$click.play()
 
 func play_game_over():
 	$bgm.stop() 

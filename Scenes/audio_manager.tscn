@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkm1s13bgj5eg"]
+[gd_scene load_steps=9 format=3 uid="uid://dkm1s13bgj5eg"]
 
 [ext_resource type="Script" uid="uid://wn1f3yye6ii8" path="res://Script/audio_manager.gd" id="1_5kf6k"]
 [ext_resource type="AudioStream" uid="uid://dvw7na78dsgca" path="res://Assets/audio/laserShoot.wav" id="2_tnn7g"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b7878kyjaoapb" path="res://Assets/audio/glass-breaking-sound.mp3" id="5_5nrbi"]
 [ext_resource type="AudioStream" uid="uid://dde1r8hnx8nh1" path="res://Assets/audio/die.wav" id="6_pn88s"]
 [ext_resource type="AudioStream" uid="uid://ijehtb23gpm3" path="res://Assets/audio/Bgm-G2.wav" id="7_fasow"]
+[ext_resource type="AudioStream" uid="uid://bvxkolp1ss17w" path="res://Assets/audio/click.wav" id="8_tnn7g"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -15,20 +16,31 @@ script = ExtResource("1_5kf6k")
 [node name="laser" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_tnn7g")
 max_polyphony = 5
+bus = &"Sound"
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_lwpe1")
+bus = &"Sound"
 
 [node name="HeartBreak" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_jmilc")
+bus = &"Sound"
 
 [node name="glassBreak" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("5_5nrbi")
 max_polyphony = 5
+bus = &"Sound"
 
 [node name="gameOver" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_pn88s")
+bus = &"Sound"
 
 [node name="bgm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fasow")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_tnn7g")
+bus = &"Sound"
